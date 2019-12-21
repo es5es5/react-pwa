@@ -7,4 +7,12 @@ const App = () => (
   </div>
 )
 
-ReactDOM.render(<App />, document.getElementById("app"))
+ReactDOM.render(<App />, document.getElementById("app"));
+
+// if your browser has SW
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    // GenerateSW will auto generate service-worker.js
+    navigator.serviceWorker.register('/service-worker.js');
+  })
+}
