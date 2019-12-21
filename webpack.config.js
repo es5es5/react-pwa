@@ -1,5 +1,6 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 
 module.exports = {
   entry: './src/index.js',
@@ -21,6 +22,20 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
+    }),
+    new WebpackPwaManifest({
+      name: 'My React Memo App',
+      short_name: 'Memo',
+      description: 'My React Memo App for PWA Workshop.',
+      background_color: '#FFF',
+      crossorigin: 'use-credentials',
+      theme_color: '#EEE',
+      icons: [
+        {
+          src: path.resolve('src/assets/Icon.png'),
+          sizes: [96, 128, 192, 256, 384, 512]
+        }
+      ]
     })
   ]
 }
